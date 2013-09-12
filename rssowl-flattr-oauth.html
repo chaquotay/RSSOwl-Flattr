@@ -1,0 +1,46 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+       "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<title>RSSOwl-Flattr-OAuth</title>
+<style type="text/css">
+body {
+	font-family: "Courier New", Courier, monospace
+}
+dt {
+	letter-spacing:0.4em;
+	padding-bottom: 0.8em
+}
+.central {
+    position:fixed;
+    top: 50%;
+    left: 50%;
+    width:26em;
+    height:7em;
+    margin-top: -3.5em; /*set to a negative number 1/2 of your height*/
+    margin-left: -13em; /*set to a negative number 1/2 of your width*/
+}
+</style>
+</head>
+<body>
+<div class="central" id="container">
+</div>
+<script lang="javascript">
+var query = location.search.substr(1);
+var pairs = query.split('&');
+var pair;
+var params = {};
+var container = document.getElementById('container');
+for(var i = 0; i<pairs.length; i++) {
+	pair = pairs[i].split('=');
+	if(pair.length==2) {
+		var name = decodeURIComponent(pair[0]);
+		var value = decodeURIComponent(pair[1]);
+		var textNode = document.createTextNode(name + " is " + value);
+		container.appendChild(textNode);
+		container.appendChild(document.createElement("br"));
+	}
+}
+</script>
+</body>
+</html>
