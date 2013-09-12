@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         point="org.rssowl.core.NamespaceHandler">
+      <namespaceHandler
+            class="org.notatoaster.rssowl.flattr.interpreter.AtomPaymentNamespaceHandler"
+            namespaceURI="http://www.w3.org/2005/Atom">
+      </namespaceHandler>
+   </extension>
+   <extension
+         point="org.eclipse.ui.popupMenus">
+      <objectContribution
+            adaptable="false"
+            id="org.notatoaster.rssowl.flattr.FlattrContribution"
+            objectClass="java.lang.Object">
+         <action
+               class="org.notatoaster.rssowl.flattr.ui.internal.actions.FlattrAction"
+               definitionId="org.notatoaster.rssowl.flattr.ui.actions.FlattrThis"
+               icon="icons/flattr-icon.gif"
+               id="org.notatoaster.rssowl.flattr.ui.internal.actions.FlattrAction"
+               label="&amp;Flattr this!"
+               menubarPath="payment">
+         </action>
+         <visibility>
+            <or>
+               <objectClass
+                     name="org.rssowl.core.persist.INews">
+               </objectClass>
+               <objectClass
+                     name="org.rssowl.core.persist.IFeed">
+               </objectClass>
+            </or>
+         </visibility>
+      </objectContribution>
+   </extension>
+   <extension
+         point="org.eclipse.ui.commands">
+      <command
+            categoryId="org.rssowl.ui.commands.category.RSSOwl"
+            id="org.notatoaster.rssowl.flattr.ui.actions.FlattrThis"
+            name="Flattr this!">
+      </command>
+   </extension>
+   <extension
+         point="org.eclipse.ui.preferencePages">
+      <page
+            class="org.notatoaster.rssowl.flattr.ui.preferences.FlattrPreferencePage"
+            id="org.notatoaster.rssowl.flattr.ui.preferences.FlattrPreferencePage"
+            name="Flattr">
+      </page>
+   </extension>
+   <extension
+         point="org.eclipse.core.runtime.preferences">
+      <initializer
+            class="org.notatoaster.rssowl.flattr.ui.preferences.PreferenceInitializer">
+      </initializer>
+   </extension>
+
+
+</plugin>

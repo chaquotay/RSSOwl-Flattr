@@ -1,0 +1,13 @@
+package org.notatoaster.rssowl.lib.flattr;
+
+import org.shredzone.flattr4j.oauth.ConsumerKey;
+
+// WARNING: NEVER EVER PUT THIS FILE WITH REAL INFORMATION INTO PUBLIC, E.G. VERSION CONTROL!!!
+public class FlattrApplicationConfig {
+
+	private static final String APP_KEY = "";
+	private static final String APP_SECRET = "";
+	
+	static final ConsumerKey Key =  new ConsumerKey(APP_KEY, APP_SECRET);
+	
+}
