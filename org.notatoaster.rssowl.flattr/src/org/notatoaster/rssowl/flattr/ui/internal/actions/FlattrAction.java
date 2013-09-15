@@ -20,7 +20,6 @@ import org.notatoaster.rssowl.flattr.internal.IFlattr;
 import org.rssowl.core.persist.IEntity;
 import org.rssowl.core.util.StringUtils;
 import org.rssowl.ui.internal.Activator;
-import org.rssowl.ui.internal.editors.browser.WebBrowserContext;
 
 public class FlattrAction extends Action implements IWorkbenchWindowActionDelegate, IObjectActionDelegate  {
 
@@ -28,7 +27,6 @@ public class FlattrAction extends Action implements IWorkbenchWindowActionDelega
 	public static final String ID = "org.notatoaster.rssowl.flattr.ui.internal.actions.FlattrAction"; //$NON-NLS-1$
 
 	private IStructuredSelection fSelection;
-	private WebBrowserContext fContext;
 	private Shell fShell;
 
 	/** Default Constructor for Reflection */
@@ -40,17 +38,7 @@ public class FlattrAction extends Action implements IWorkbenchWindowActionDelega
 	 * @param selection
 	 */
 	public FlattrAction(IStructuredSelection selection) {
-		this(selection, null);
-	}
-
-
-	/**
-	 * @param selection
-	 * @param context
-	 */
-	public FlattrAction(IStructuredSelection selection, WebBrowserContext context) {
 		fSelection = selection;
-		fContext = context;
 		setText("Flattr this!");
 		setId(ID);
 		setActionDefinitionId(ID);
@@ -120,7 +108,24 @@ public class FlattrAction extends Action implements IWorkbenchWindowActionDelega
 	public void selectionChanged(IAction action, ISelection selection) {
 		if (selection instanceof IStructuredSelection) {	      
 			fSelection = (IStructuredSelection) selection;
+			action.setEnabled(isAnythingPayableSelected());
 		}
+	}
+	
+	private boolean isAnythingPayableSelected() {
+		if(fSelection==null)
+			return false;
+		
+		List<?> selection = fSelection.toList();
+		for (Object object : selection) {
+			if (object instanceof IEntity) {
+				IEntity news = (IEntity) object;
+				String href = (String)news.getProperty("payment-uri"); //$NON-NLS-1$
+				if(StringUtils.isSet(href))
+					return true;
+			}
+		}
+		return false;
 	}
 
 	@Override
