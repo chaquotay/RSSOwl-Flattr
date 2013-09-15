@@ -47,12 +47,12 @@ public class AuthorizationDialog extends Dialog {
 		c.setLayout(new GridLayout(2, false));
 
 		Label step1 = new Label(c, SWT.NONE);
-		step1.setText("Step 1: Initiate Flattr authorization");
-		step1.setFont(JFaceResources.getFontRegistry().getBold(""));
+		step1.setText(Messages.AuthorizationDialog_STEP1);
+		step1.setFont(JFaceResources.getFontRegistry().getBold("")); //$NON-NLS-1$
 		step1.setLayoutData(horizontalSpan(2));
 
 		Link btnStartOAuth = new Link(c, SWT.NONE);
-		btnStartOAuth.setText("<a>Open Flattr authorization website in browser...</a>");
+		btnStartOAuth.setText(Messages.AuthorizationDialog_OPEN_AUTH_WEBSITE);
 		btnStartOAuth.addSelectionListener(new SelectionAdapter() {
 			public void widgetSelected(SelectionEvent e) {
 				try {
@@ -65,13 +65,13 @@ public class AuthorizationDialog extends Dialog {
 		btnStartOAuth.setLayoutData(horizontalSpan(2));
 
 		Label step2= new Label(c, SWT.NONE);
-		step2.setText("Step 2: Confirm Flattr authorization");
-		step2.setFont(JFaceResources.getFontRegistry().getBold(""));
+		step2.setText(Messages.AuthorizationDialog_STEP2);
+		step2.setFont(JFaceResources.getFontRegistry().getBold("")); //$NON-NLS-1$
 		step2.setLayoutData(horizontalSpan(2));
 
 
 		Label lblCode = new Label(c, SWT.NONE);
-		lblCode.setText("Flattr authorization code:");
+		lblCode.setText(Messages.AuthorizationDialog_AUTH_CODE);
 
 		final Text txtCode = new Text(c, SWT.BORDER);
 		GridData gd = new GridData();
@@ -100,9 +100,9 @@ public class AuthorizationDialog extends Dialog {
 	@Override
 	protected void configureShell(Shell newShell) {
 		super.configureShell(newShell);
-		newShell.setText("Flattr Authorization");
+		newShell.setText(Messages.AuthorizationDialog_TITLE);
 		newShell.setSize(550, 200);
-		newShell.setImage(Activator.getImageDescriptor("icons/flattr-icon.png").createImage(true));
+		newShell.setImage(Activator.getImageDescriptor("icons/flattr-icon.png").createImage(true)); //$NON-NLS-1$
 	}
 
 

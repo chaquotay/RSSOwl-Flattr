@@ -16,7 +16,7 @@ public class AtomPaymentNamespaceHandler implements INamespaceHandler {
 		if("link".equals(element.getName())) { //$NON-NLS-1$
 			String rel = element.getAttributeValue("rel"); //$NON-NLS-1$
 			if("payment".equals(rel)) { //$NON-NLS-1$
-				String title = element.getAttributeValue("title", "Flattr this!"); //$NON-NLS-1$
+				String title = element.getAttributeValue("title"); //$NON-NLS-1$
 				String href = element.getAttributeValue("href"); //$NON-NLS-1$
 				URI uri = URIUtils.createURI(href);
 				if(uri != null) {

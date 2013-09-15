@@ -1,9 +1,9 @@
 package org.notatoaster.rssowl.flattr.internal;
 
 public enum FlattrMechanism {
-	Unknown (""),
-	API ("api"),
-	Browser ("browser");
+	Unknown (""), //$NON-NLS-1$
+	API ("api"), //$NON-NLS-1$
+	Browser ("browser"); //$NON-NLS-1$
 	
 	private final String fPrefValue;
 	

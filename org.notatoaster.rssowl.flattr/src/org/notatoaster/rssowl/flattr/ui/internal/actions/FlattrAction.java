@@ -102,7 +102,7 @@ public class FlattrAction extends Action implements IWorkbenchWindowActionDelega
 		for (Object object : selection) {
 			if (object instanceof IEntity) {
 				IEntity news = (IEntity) object;
-				String href = (String)news.getProperty("payment-uri");
+				String href = (String)news.getProperty("payment-uri"); //$NON-NLS-1$
 				if(StringUtils.isSet(href))
 					flattr.flattrThing(href);
 			}

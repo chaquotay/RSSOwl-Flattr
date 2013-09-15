@@ -5,8 +5,8 @@ import org.notatoaster.rssowl.flattr.Activator;
 
 public class FlattrPreference {
 
-	private static final String P_MECHANISM = "flattrMechanism";
-	private static final String P_TOKEN = "flattrOAuthAccessToken";
+	private static final String P_MECHANISM = "flattrMechanism"; //$NON-NLS-1$
+	private static final String P_TOKEN = "flattrOAuthAccessToken"; //$NON-NLS-1$
 	
 	private IPreferenceStore fStore;
 	
@@ -33,7 +33,7 @@ public class FlattrPreference {
 	
 	public void initDefaults() {
 		fStore.setDefault(P_MECHANISM, FlattrMechanism.Browser.toPrefValue());
-		fStore.setDefault(P_TOKEN, "");
+		fStore.setDefault(P_TOKEN, "");  //$NON-NLS-1$
 	}
 	
 	public static FlattrPreference getDefault() {

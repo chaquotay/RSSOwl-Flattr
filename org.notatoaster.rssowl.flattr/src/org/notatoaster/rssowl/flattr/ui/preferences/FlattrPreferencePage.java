@@ -24,14 +24,14 @@ import org.rssowl.core.util.StringUtils;
 public class FlattrPreferencePage extends PreferencePage implements
 		IWorkbenchPreferencePage {
 
-	public static final String ID = "org.notatoaster.rssowl.flattr.ui.preferences.FlattrPreferencePage";
+	public static final String ID = "org.notatoaster.rssowl.flattr.ui.preferences.FlattrPreferencePage"; //$NON-NLS-1$
 	private Shell fShell;
 	private FlattrAuthorization fFlattr;
 	private FlattrPreference fFlattrPref;
 
 	public FlattrPreferencePage() {
 		setPreferenceStore(Activator.getDefault().getPreferenceStore());
-		setImageDescriptor(Activator.getImageDescriptor("icons/flattr-icon.png"));
+		setImageDescriptor(Activator.getImageDescriptor("icons/flattr-icon.png")); //$NON-NLS-1$
 		fFlattr = Activator.getDefault().getFlattr();
 		fFlattrPref = new FlattrPreference(getPreferenceStore());
 	}
@@ -61,16 +61,16 @@ public class FlattrPreferencePage extends PreferencePage implements
 		c.setLayout(layout);
 
 		Label heading = new Label(c, SWT.BOLD);
-		heading.setFont(JFaceResources.getFontRegistry().getBold(""));
+		heading.setFont(JFaceResources.getFontRegistry().getBold("")); //$NON-NLS-1$
 
-		heading.setText("Flattr Mechanism");
+		heading.setText(Messages.FlattrPreferencePage_MECHANISM);
 		heading.setLayoutData(horizontalSpan(2));
 
 		final Button rdAPI = new Button(c, SWT.RADIO);
-		rdAPI.setText("Direct (API)");
+		rdAPI.setText(Messages.FlattrPreferencePage_MECHANISM_API);
 		rdAPI.setToolTipText(fFlattrPref.getAccessToken());
 		final Button btnConfigureAPI = new Button(c, SWT.PUSH);
-		btnConfigureAPI.setText("Authorize...");
+		btnConfigureAPI.setText(Messages.FlattrPreferencePage_AUTHORIZE_BUTTON);
 		rdAPI.addSelectionListener(new SelectionAdapter() {
 
 			@Override
@@ -108,7 +108,7 @@ public class FlattrPreferencePage extends PreferencePage implements
 		});
 
 		final Button rdBrowser = new Button(c, SWT.RADIO);
-		rdBrowser.setText("Browser");
+		rdBrowser.setText(Messages.FlattrPreferencePage_MECHANISM_BROWSER);
 		rdBrowser.setLayoutData(horizontalSpan(2));
 		rdBrowser.setSelection(fFlattrPref.getMechanism()==FlattrMechanism.Browser);
 		rdBrowser.addSelectionListener(new SelectionAdapter() {

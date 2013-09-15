@@ -18,10 +18,10 @@ public class MessageBoxUtils {
 		  mb.open();
 	}
 	
-	public static int askYesNoQuestion(Shell shell, String message) {
+	public static boolean askYesNoQuestion(Shell shell, String message) {
 		MessageBox mb = new MessageBox(shell, SWT.ICON_INFORMATION | SWT.YES | SWT.NO);
 		  mb.setMessage(message);
-		  return mb.open();
+		  return mb.open()==SWT.YES;
 	}
 	
 }

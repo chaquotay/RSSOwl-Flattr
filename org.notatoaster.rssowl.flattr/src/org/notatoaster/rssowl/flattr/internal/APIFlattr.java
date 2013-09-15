@@ -1,6 +1,5 @@
 package org.notatoaster.rssowl.flattr.internal;
 
-import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.dialogs.PreferencesUtil;
 import org.notatoaster.rssowl.flattr.ui.internal.util.MessageBoxUtils;
@@ -23,15 +22,15 @@ public class APIFlattr implements IFlattr {
 	public void flattrThing(String thingUrl) {
 		FlattrResult result = fNativeFlattr.flattrThing(thingUrl);
 		if(result.isSuccess()) {
-			MessageBoxUtils.showInformation(fShell, "You successfully flattred something!");
+			MessageBoxUtils.showInformation(fShell, Messages.FlattrCommon_MSG_SUCCESS);
 		} else {
 			
 			if(result.getCode()==FlattrResultCode.FailureUnauthorized) {
-				if(MessageBoxUtils.askYesNoQuestion(fShell, "Not authorized. Open Flattr preferences?") == SWT.YES) {
+				if(MessageBoxUtils.askYesNoQuestion(fShell, Messages.FlattrCommon_MSG_NOT_AUTHORIZED_OPEN_PREF)) {
 					PreferencesUtil.createPreferenceDialogOn(fShell, FlattrPreferencePage.ID, null, null).open();
 				}
 			} else {
-				MessageBoxUtils.showError(fShell, "Something went wrong: " + result.getMessage());
+				MessageBoxUtils.showError(fShell, Messages.FlattrCommon_MSG_ERROR + result.getMessage());
 			}
 		}
 	}

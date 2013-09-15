@@ -15,8 +15,10 @@ public class UnconfiguredFlattr implements IFlattr {
 	
 	@Override
 	public void flattrThing(String thingUrl) {
-		MessageBoxUtils.showError(fShell, "Flattr is not configured!");
-		PreferencesUtil.createPreferenceDialogOn(fShell, FlattrPreferencePage.ID, null, null).open();
+		if(MessageBoxUtils.askYesNoQuestion(fShell, Messages.FlattrCommon_MSG_NOT_CONFIGURED_OPEN_PREF))
+		{
+			PreferencesUtil.createPreferenceDialogOn(fShell, FlattrPreferencePage.ID, null, null).open();
+		}
 	}
 
 }
